@@ -4,7 +4,11 @@ var pendientes = [
     { descripcion: "Dormir", completado: true },
     { descripcion: "Cortarse el pelo", completado: false }
 ];
-
+function agregarPendiente() {
+    var item = document.getElementById("item");
+    pendientes.push({ 'descripcion': item.value, completado: false });
+    imprimirTodosLosPendientes();
+}
 function imprimirPendientes(pendiente, index) {
     var lista = document.getElementById("lista");
     lista.insertAdjacentHTML('beforeend',
@@ -15,6 +19,7 @@ function imprimirPendientes(pendiente, index) {
         <div class="descripcion">`+ pendiente.descripcion + `</div>
     </li>`);
 }
+
 function estaCompletado(completado) {
     if (completado) {
         return 'class="done pendiente"';
@@ -29,9 +34,12 @@ function marcarCompletado(index) {
     imprimirTodosLosPendientes();
 }
 
+
+
 function imprimirTodosLosPendientes() {
     document.getElementById("lista").innerHTML = "";
     pendientes.forEach(imprimirPendientes);
 }
+
 
 imprimirTodosLosPendientes();
